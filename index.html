@@ -4,34 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GPA Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
 </head>
 <body>
-    <h1>GPA Calculator</h1>
-    <form method="POST">
-        <label for="num_courses">How many courses?</label>
-        <input type="number" id="num_courses" name="num_courses" required>
-        <div id="courses"></div>
-        <button type="button" onclick="addCourses()">Add Courses</button>
-        <input type="submit" value="Calculate GPA">
-    </form>
+    <div class="container">
+        <h2>GPA Calculator</h2>
+        <div id="courses-container"></div>
+        <button id="add-course">Add Course</button>
+        <button id="calculate-gpa">Calculate GPA</button>
+        <div class="result" id="gpa-result"></div>
+    </div>
 
-    <script>
-        function addCourses() {
-            const numCourses = document.getElementById('num_courses').value;
-            const coursesDiv = document.getElementById('courses');
-            coursesDiv.innerHTML = '';
-
-            for (let i = 0; i < numCourses; i++) {
-                coursesDiv.innerHTML += `
-                    <label for="grade_${i}">Grade for course ${i + 1}:</label>
-                    <input type="text" id="grade_${i}" name="grade_${i}" required>
-                    <label for="credit_hours_${i}">Credit hours:</label>
-                    <input type="number" id="credit_hours_${i}" name="credit_hours_${i}" required>
-                    <br>
-                `;
-            }
-            console.log(coursesDiv.innerHTML); // Check the generated HTML
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
