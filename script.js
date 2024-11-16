@@ -7,7 +7,22 @@ document.getElementById("add-course").addEventListener("click", () => {
     courseDiv.classList.add("form-group");
     courseDiv.innerHTML = `
         <label>Course ${courseCount}</label>
-        <input type="text" class="grade" placeholder="Enter grade (A, B+, etc.)">
+        <!--<input type="text" class="grade" placeholder="Enter grade (A, B+, etc.)">-->
+        <select class="grade">
+            <option value="">Select grade</option>
+            <option value="A+">A+</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="F">F</option>
+        </select>
         <input type="number" class="credit" placeholder="Enter credit hours">
     `;
     container.appendChild(courseDiv);
@@ -24,7 +39,7 @@ document.getElementById("calculate-gpa").addEventListener("click", () => {
         const creditHours = parseInt(credits[i].value);
 
         let points = 0;
-        if (grade === "A") points = 4.0 * creditHours;
+        if (grade === "A+" ||grade === "A" ) points = 4.0 * creditHours;
         else if (grade === "A-") points = 3.67 * creditHours;
         else if (grade === "B+") points = 3.33 * creditHours;
         else if (grade === "B") points = 3.0 * creditHours;
