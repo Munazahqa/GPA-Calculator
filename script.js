@@ -23,7 +23,7 @@ document.getElementById("add-course").addEventListener("click", () => {
             <option value="D">D</option>
             <option value="F">F</option>
         </select>
-        <input type="number" class="credit" placeholder="Enter credit hours">
+        <input type="number" class="credit" placeholder="Enter credit hours" min="1">
     `;
     container.appendChild(courseDiv);
 });
@@ -37,6 +37,11 @@ document.getElementById("calculate-gpa").addEventListener("click", () => {
     for (let i = 0; i < grades.length; i++) {
         const grade = grades[i].value.toUpperCase();
         const creditHours = parseInt(credits[i].value);
+
+        if (creditHours <= 0) {
+            alert(`Credit hours for Course ${i + 1} cannot be negative or zero.`);
+            return;
+        }
 
         let points = 0;
         if (grade === "A+" ||grade === "A" ) points = 4.0 * creditHours;
